@@ -29,17 +29,30 @@ $user = mysqli_fetch_assoc($result);
     <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
-    
-  <h2>Welcome, <?php echo $user['name']; ?></h2>
-<p>Enrollment No: <?php echo $user['enrollment_no']; ?></p>
-<p>Email: <?php echo decryptData($user['email_encrypted']); ?></p>
-<p>Mobile: <?php echo decryptData($user['mobile_encrypted']); ?></p>
-<p>State: <?php echo $user['state']; ?></p>
-<p>District: <?php echo $user['district']; ?></p>
-<p>PIN Code: <?php echo $user['pin_code']; ?></p>
-<a href="add_extra.php">Add More Info</a> | <a href="logout.php">Logout</a>
 
+<?php if (isset($_SESSION['update_success'])): ?>
+    <div class="success-message">
+        <?php
+            echo $_SESSION['update_success'];
+            unset($_SESSION['update_success']);
+        ?>
+    </div>
+<?php endif; ?>
 
-    <!-- Your form here -->
+<div class="container-box dashboard-container">
+    <h2>Welcome, <?php echo $user['name']; ?></h2>
+    <p><strong>Enrollment No:</strong> <?php echo $user['enrollment_no']; ?></p>
+    <p><strong>Email:</strong> <?php echo decryptData($user['email_encrypted']); ?></p>
+    <p><strong>Mobile:</strong> <?php echo decryptData($user['mobile_encrypted']); ?></p>
+    <p><strong>State:</strong> <?php echo $user['state']; ?></p>
+    <p><strong>District:</strong> <?php echo $user['district']; ?></p>
+    <p><strong>PIN Code:</strong> <?php echo $user['pin_code']; ?></p>
+
+    <div class="button-group">
+        <a href="add_extra.php" class="btn">Add More Info</a>
+        <a href="logout.php" class="btn logout-btn">Logout</a>
+    </div>
+</div>
+
 </body>
 </html>

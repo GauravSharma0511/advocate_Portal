@@ -16,11 +16,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         }
     }
-    echo "Either Login ID or Password is wrong.";
+    echo "<script>alert('Either Login ID or Password is wrong.');</script>";
 }
 ?>
-
-<!-- HTML Login Form -->
 
 <!DOCTYPE html>
 <html>
@@ -29,12 +27,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
-    <h2>Login </h2>
+
+<div class="container-box">
+    <h2>Login</h2>
+
     <form method="POST">
-    <input  type="text" name="enrollment_no" placeholder="Enrollment No" required><br>
-    <input name="password" type="password" placeholder="Password" required><br>
-    <button type="submit">Login</button>
-</form>
-    <!-- Your form here -->
+        <label for="enrollment_no">Enrollment No:</label>
+        <input type="text" name="enrollment_no" id="enrollment_no" placeholder="Enter your Enrollment No" required>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" placeholder="Enter your Password" required>
+
+        <button type="submit">Login</button>
+    </form>
+</div>
+
 </body>
 </html>
